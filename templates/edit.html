@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Edit My Watchlist</h3>
+
+<form action="/add" method="post">
+    <label>
+        I want to add
+        <input type="text" name="new-movie"/>
+        to my watchlist.
+    </label>
+    <input type="submit" value="Add It"/>
+</form>
+
+<form action="/watched-it" method="post">
+    <label>
+        <ul>
+        {% for movie in movies %}
+        <li>{{ movie }}<button name="watched-movie" value="{{ movie }}" type="submit">I watched it!</button></li>
+        {% endfor %}
+        </ul>
+    </label>
+
+</form>
+
+<p class='error'>{{ error }}</p>
+{% endblock %}
