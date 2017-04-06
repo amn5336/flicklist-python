@@ -20,12 +20,13 @@ def getUnwatchedMovies():
     """ Returns the list of movies the user wants to watch (but hasnt yet) """
 
     # for now, we are just pretending
+    # will turn into database on Monday
     return [ "Star Wars", "Minions", "Freaky Friday", "My Favorite Martian" ]
 
 
 def getWatchedMovies():
     """ Returns the list of movies the user has already watched """
-
+    # will turn into database on Monday
     return [ "The Matrix", "The Big Green" ]
 
 
@@ -96,9 +97,15 @@ class WatchedMovie(webapp2.RequestHandler):
         content = t.render(movie = watched_movie)
         self.response.write(content)
 
+class RateMovie(webapp2.RequestHandler):
+    def get(self):
+        t = jinja_env.get_template("rate-movies.html")
+        content = t.render(movies = getWatchedMovies())
+        self.response.write(content)
 
 app = webapp2.WSGIApplication([
     ('/', Index),
     ('/add', AddMovie),
-    ('/watched-it', WatchedMovie)
+    ('/watched-it', WatchedMovie),
+    ('/rate', RateMovie)
 ], debug=True)
