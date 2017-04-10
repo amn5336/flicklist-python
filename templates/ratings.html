@@ -8,9 +8,17 @@
     <li>
         <h3>{{ movie }}</h3>
         <form action="/ratings" method="post">
-        <label>My Rating</label>
-        <select> <option
-
+            <label>My Rating</label>
+                <select name="rating">
+                    <option value="How was it?">How was it?</option>
+                    <option value="*">*</option>
+                    <option value="**">**</option>
+                    <option value="***">***</option>
+                    <option value="****">****</option>
+                    <option value="*****">*****</option>
+                </select>
+                <input type="hidden" name="movie" value="{{ movie }}"/>
+                <input type="submit" value="Rate it!"/>
         </form>
 
         <!--
@@ -18,7 +26,7 @@
         Each of these list items should contain a form that submits to /ratings
         The form should contain:
             - label that says "My Rating"
-            - a dropdown menu with 6 options:
+            - a dropdown menu with 6 options
                 - "How was it?"
                 - *
                 - **

@@ -12,15 +12,17 @@
     <input type="submit" value="Add It"/>
 </form>
 
-<form action="/watched-it" method="post">
+<form action="/cross-off" method="post">
     <label>
-        <ul>
-        {% for movie in movies %}
-        <li>{{ movie }}<button name="watched-movie" value="{{ movie }}" type="submit">I watched it!</button></li>
-        {% endfor %}
-        </ul>
+        I want to cross off
+        <select name="crossed-off-movie"/>
+            {% for movie in crossedoffmovie %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        from my watchlist.
     </label>
-
+    <input type="submit" value="Cross It Off"/>
 </form>
 
 <p class='error'>{{ error }}</p>
